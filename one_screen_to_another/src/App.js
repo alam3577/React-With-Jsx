@@ -1,26 +1,38 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Screen1 from "./Screen1";
-import Screen2 from "./Screen2";
+import TwoScreen from "./hooks/TwoScreen";
+import OneScreen from "./hooks/OneScreen";
+import SigninScreen from "./classbased/SigninScreen";
+import SignupScreen from "./classbased/SignupScreen";
+function App() {
+  return (
+    <>
+      {/* <Router>
+        <Route exact={true} path="/" component={OneScreen}></Route>
+        <Route exact={true} path="/screen2/:id" component={TwoScreen}></Route>
+      </Router> */}
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <>
-        <Router>
-          <Route path="/" exact={true} strict component={Screen1}></Route>
+      {/* <Router>
+          <Route strict exact={true} path="/" component={Screen1}></Route>
           <Route
-            path="/screen2/:p_id"
-            exact={true}
             strict
+            exact={true}
+            path="/screen2/:p_id"
             component={Screen2}
           ></Route>
-          
-        </Router>
-      </>
-    );
-  }
+        </Router> */}
+
+      <Router>
+        <Route strict exact={true} path="/" component={SigninScreen}></Route>
+        <Route
+          strict
+          exact={true}
+          path="/signup/:name"
+          component={SignupScreen}
+        ></Route>
+      </Router>
+    </>
+  );
 }
+
+export default App;
